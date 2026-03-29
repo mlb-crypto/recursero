@@ -15,94 +15,90 @@
     --radius: 10px;
     --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --header-h: 63px;
+    --thead-h: 38px;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; line-height: 1.5; }
 
+  /* HEADER */
   header {
     background: var(--surface); border-bottom: 1px solid var(--border);
-    padding: 18px 32px; position: sticky; top: 0; z-index: 100;
-    display: flex; align-items: center; gap: 14px;
+    padding: 18px 32px; position: sticky; top: 0; z-index: 200;
+    display: flex; align-items: center; gap: 14px; height: var(--header-h);
   }
   .header-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
   header h1 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
   header p { font-size: 12px; color: var(--text3); margin-top: 1px; }
-  .header-count {
-    margin-left: auto; font-family: 'DM Mono', monospace; font-size: 12px;
-    color: var(--text3); background: var(--surface2); border: 1px solid var(--border);
-    padding: 4px 10px; border-radius: 6px; white-space: nowrap;
-  }
+  .header-count { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); background: var(--surface2); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; white-space: nowrap; }
   .header-count span { color: var(--accent); font-weight: 500; }
 
-  .layout { display: grid; grid-template-columns: 272px 1fr; min-height: calc(100vh - 63px); }
+  /* LAYOUT */
+  .layout { display: grid; grid-template-columns: 272px 1fr; height: calc(100vh - var(--header-h)); overflow: hidden; }
 
-  .sidebar {
-    background: var(--surface); border-right: 1px solid var(--border);
-    padding: 22px 18px; overflow-y: auto;
-    position: sticky; top: 63px; height: calc(100vh - 63px);
-  }
+  /* SIDEBAR */
+  .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 22px 18px; overflow-y: auto; }
   .sidebar-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 16px; }
 
   .search-wrap { position: relative; margin-bottom: 18px; }
   .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text3); pointer-events: none; }
-  .search-input {
-    width: 100%; padding: 8px 10px 8px 32px; border: 1px solid var(--border);
-    border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 13px;
-    background: var(--surface2); color: var(--text); outline: none; transition: border-color 0.15s, background 0.15s;
-  }
+  .search-input { width: 100%; padding: 8px 10px 8px 32px; border: 1px solid var(--border); border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--surface2); color: var(--text); outline: none; transition: border-color 0.15s, background 0.15s; }
   .search-input:focus { border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-light); }
   .search-input::placeholder { color: var(--text3); }
 
   .filter-group { margin-bottom: 16px; }
-  .filter-label {
-    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
-    color: var(--text2); margin-bottom: 5px; display: flex; align-items: center; justify-content: space-between;
-  }
+  .filter-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text2); margin-bottom: 5px; display: flex; align-items: center; justify-content: space-between; }
   .filter-clear { font-size: 10px; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--accent); cursor: pointer; display: none; }
   .filter-clear.visible { display: block; }
-  .filter-select {
-    width: 100%; padding: 7px 28px 7px 10px; border: 1px solid var(--border); border-radius: 8px;
-    font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--surface2); color: var(--text);
-    outline: none; appearance: none; cursor: pointer; transition: border-color 0.15s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9e96' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 10px center;
-  }
+  .filter-select { width: 100%; padding: 7px 28px 7px 10px; border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--surface2); color: var(--text); outline: none; appearance: none; cursor: pointer; transition: border-color 0.15s; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9e96' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
   .filter-select:focus { border-color: var(--accent); }
   .filter-select.active { border-color: var(--accent); background-color: var(--accent-light); color: var(--accent); }
 
-  .reset-btn {
-    width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 8px;
-    background: var(--surface2); font-family: 'DM Sans', sans-serif; font-size: 12px;
-    color: var(--text2); cursor: pointer; transition: all 0.15s; margin-top: 4px;
-  }
+  .reset-btn { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface2); font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--text2); cursor: pointer; transition: all 0.15s; margin-top: 4px; }
   .reset-btn:hover { background: var(--border); color: var(--text); }
 
-  .main { padding: 22px 26px; overflow-y: auto; }
+  /* MAIN */
+  .main { display: flex; flex-direction: column; overflow: hidden; }
+  .main-top { padding: 16px 26px 10px; flex-shrink: 0; }
 
-  .active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; min-height: 0; }
-  .filter-tag {
-    display: flex; align-items: center; gap: 5px; background: var(--accent-light);
-    border: 1px solid var(--accent-border); color: var(--accent); font-size: 11px;
-    font-weight: 500; padding: 3px 8px; border-radius: 20px; animation: fadeIn 0.15s ease;
-  }
+  .active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; min-height: 0; }
+  .filter-tag { display: flex; align-items: center; gap: 5px; background: var(--accent-light); border: 1px solid var(--accent-border); color: var(--accent); font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 20px; animation: fadeIn 0.15s ease; }
   .filter-tag button { background: none; border: none; color: var(--accent); cursor: pointer; padding: 0; font-size: 13px; line-height: 1; opacity: 0.7; }
   .filter-tag button:hover { opacity: 1; }
 
-  .results-info { font-size: 12px; color: var(--text3); margin-bottom: 12px; font-family: 'DM Mono', monospace; }
+  .results-info { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
   .results-info strong { color: var(--text2); }
 
+  /* TABLE CONTAINER — scrollable, fixed header */
+  .table-container { flex: 1; overflow: auto; padding: 0 26px 26px; }
+
   .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  thead { background: var(--surface2); border-bottom: 1px solid var(--border); }
-  th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text2); white-space: nowrap; }
+
+  thead { position: sticky; top: 0; z-index: 10; }
+  thead tr { background: var(--surface2); border-bottom: 2px solid var(--border); }
+
+  th {
+    padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--text2);
+    white-space: nowrap; cursor: pointer; user-select: none;
+    transition: background 0.15s; background: var(--surface2);
+  }
+  th:hover { background: var(--border); color: var(--text); }
+  th.sort-asc::after  { content: ' ↑'; color: var(--accent); }
+  th.sort-desc::after { content: ' ↓'; color: var(--accent); }
+  th.sort-asc, th.sort-desc { color: var(--accent); background: var(--accent-light); }
+
   tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; cursor: pointer; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: var(--surface2); }
   td { padding: 11px 14px; color: var(--text); vertical-align: top; }
-  .td-name { font-weight: 500; max-width: 220px; }
+  .td-name { font-weight: 500; max-width: 200px; }
   .td-sub { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: 'DM Mono', monospace; }
-  .td-tags { display: flex; flex-wrap: wrap; gap: 3px; max-width: 220px; }
+  .td-tags { display: flex; flex-wrap: wrap; gap: 3px; max-width: 200px; }
   .tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
   .tag-blue { background: var(--accent-light); color: var(--accent); }
+  .tag-green { background: #EAF3DE; color: #27500A; }
 
   .empty { text-align: center; padding: 60px 20px; color: var(--text3); }
   .empty-icon { font-size: 32px; margin-bottom: 12px; }
@@ -111,7 +107,8 @@
   .loading { text-align: center; padding: 80px 20px; color: var(--text3); }
   .spinner { width: 28px; height: 28px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 14px; }
 
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 300; align-items: center; justify-content: center; padding: 20px; }
   .modal-overlay.open { display: flex; }
   .modal { background: var(--surface); border-radius: 14px; padding: 26px; max-width: 540px; width: 100%; box-shadow: var(--shadow-md); max-height: 80vh; overflow-y: auto; animation: slideUp 0.2s ease; }
   .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; gap: 12px; }
@@ -128,9 +125,11 @@
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
   @media (max-width: 768px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-    .main { padding: 16px; }
+    .layout { grid-template-columns: 1fr; height: auto; overflow: visible; }
+    .sidebar { height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .main { height: auto; overflow: visible; }
+    .table-container { overflow: visible; padding: 0 16px 16px; }
+    .main-top { padding: 16px; }
   }
 </style>
 </head>
@@ -148,44 +147,53 @@
 <div class="layout">
   <aside class="sidebar">
     <div class="sidebar-title">Filtros de búsqueda</div>
-
     <div class="search-wrap">
       <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" class="search-input" id="searchName" placeholder="Buscar por nombre...">
     </div>
-
+    <div class="filter-group">
+      <div class="filter-label">Ministerio <span class="filter-clear" id="clearMin" onclick="clearFilter('filterMin','clearMin')">Limpiar</span></div>
+      <select class="filter-select" id="filterMin" onchange="applyFilters()"><option value="">Todos</option></select>
+    </div>
+    <div class="filter-group">
+      <div class="filter-label">Tipo de dispositivo <span class="filter-clear" id="clearTipo" onclick="clearFilter('filterTipo','clearTipo')">Limpiar</span></div>
+      <select class="filter-select" id="filterTipo" onchange="applyFilters()"><option value="">Todos</option></select>
+    </div>
     <div class="filter-group">
       <div class="filter-label">Días de atención <span class="filter-clear" id="clearDias" onclick="clearFilter('filterDias','clearDias')">Limpiar</span></div>
       <select class="filter-select" id="filterDias" onchange="applyFilters()"><option value="">Todos los días</option></select>
     </div>
     <div class="filter-group">
       <div class="filter-label">Equipo profesional <span class="filter-clear" id="clearProf" onclick="clearFilter('filterProf','clearProf')">Limpiar</span></div>
-      <select class="filter-select" id="filterProf" onchange="applyFilters()"><option value="">Todos los profesionales</option></select>
+      <select class="filter-select" id="filterProf" onchange="applyFilters()"><option value="">Todos</option></select>
     </div>
     <div class="filter-group">
       <div class="filter-label">Estrategia <span class="filter-clear" id="clearEst" onclick="clearFilter('filterEst','clearEst')">Limpiar</span></div>
-      <select class="filter-select" id="filterEst" onchange="applyFilters()"><option value="">Todas las estrategias</option></select>
+      <select class="filter-select" id="filterEst" onchange="applyFilters()"><option value="">Todas</option></select>
     </div>
     <div class="filter-group">
       <div class="filter-label">Población objetivo <span class="filter-clear" id="clearPob" onclick="clearFilter('filterPob','clearPob')">Limpiar</span></div>
-      <select class="filter-select" id="filterPob" onchange="applyFilters()"><option value="">Toda la población</option></select>
+      <select class="filter-select" id="filterPob" onchange="applyFilters()"><option value="">Toda</option></select>
     </div>
     <div class="filter-group">
       <div class="filter-label">Servicios <span class="filter-clear" id="clearSrv" onclick="clearFilter('filterSrv','clearSrv')">Limpiar</span></div>
-      <select class="filter-select" id="filterSrv" onchange="applyFilters()"><option value="">Todos los servicios</option></select>
+      <select class="filter-select" id="filterSrv" onchange="applyFilters()"><option value="">Todos</option></select>
     </div>
     <div class="filter-group">
       <div class="filter-label">Barrio <span class="filter-clear" id="clearBarrio" onclick="clearFilter('filterBarrio','clearBarrio')">Limpiar</span></div>
       <select class="filter-select" id="filterBarrio" onchange="applyFilters()"><option value="">Todos los barrios</option></select>
     </div>
-
     <button class="reset-btn" onclick="resetAll()">↺ Limpiar todos los filtros</button>
   </aside>
 
   <main class="main">
-    <div id="activeTags" class="active-filters"></div>
-    <div class="results-info" id="resultsInfo"></div>
-    <div id="tableContainer"><div class="loading"><div class="spinner"></div>Cargando efectores...</div></div>
+    <div class="main-top">
+      <div id="activeTags" class="active-filters"></div>
+      <div class="results-info" id="resultsInfo"></div>
+    </div>
+    <div class="table-container">
+      <div id="tableContainer"><div class="loading"><div class="spinner"></div>Cargando efectores...</div></div>
+    </div>
   </main>
 </div>
 
@@ -198,6 +206,18 @@ const SHEET_ID   = '14Pn0u7X9AHz2ydeuld0yRtwpNkju_OR7UTVxUm2umT0';
 const SHEET_NAME = 'Buscador_final';
 
 let allData = [], filtered = [];
+let sortCol = 'Nombre del dispositivo', sortDir = 'asc';
+
+const COLUMNS = [
+  { label: 'Dispositivo',        key: 'Nombre del dispositivo' },
+  { label: 'Ministerio',         key: 'Ministerio' },
+  { label: 'Tipo de dispositivo',key: 'Tipo de dispositivo según ministerio' },
+  { label: 'Dirección',          key: 'Dirección' },
+  { label: 'Horario',            key: 'Horario de atención' },
+  { label: 'Contacto',           key: 'Contacto' },
+  { label: 'Días',               key: 'Días de atención' },
+  { label: 'Estrategia',         key: 'Estrategia' },
+];
 
 async function loadData() {
   const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
@@ -223,6 +243,19 @@ async function loadData() {
 }
 
 function buildDropdowns() {
+  // Valor único (exacto)
+  const simples = {
+    'Ministerio': 'filterMin',
+    'Tipo de dispositivo según ministerio': 'filterTipo',
+  };
+  Object.entries(simples).forEach(([col, id]) => {
+    const vals = new Set();
+    allData.forEach(row => { if (row[col]?.trim()) vals.add(row[col].trim()); });
+    const sel = document.getElementById(id);
+    [...vals].sort().forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
+  });
+
+  // Multivalor (separados por coma)
   const multivalor = {
     'Días de atención': 'filterDias', 'Equipo profesional': 'filterProf',
     'Estrategia': 'filterEst', 'Población objetivo': 'filterPob', 'Servicios': 'filterSrv'
@@ -233,6 +266,8 @@ function buildDropdowns() {
     const sel = document.getElementById(id);
     [...vals].sort().forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
   });
+
+  // Barrios
   const barrios = new Set();
   allData.forEach(r => { if (r['Barrio']) barrios.add(r['Barrio'].trim()); });
   const selB = document.getElementById('filterBarrio');
@@ -241,6 +276,8 @@ function buildDropdowns() {
 
 function applyFilters() {
   const search = document.getElementById('searchName').value.toLowerCase().trim();
+  const min    = document.getElementById('filterMin').value;
+  const tipo   = document.getElementById('filterTipo').value;
   const dias   = document.getElementById('filterDias').value;
   const prof   = document.getElementById('filterProf').value;
   const est    = document.getElementById('filterEst').value;
@@ -250,6 +287,8 @@ function applyFilters() {
 
   filtered = allData.filter(row => {
     if (search && !row['Nombre del dispositivo']?.toLowerCase().includes(search)) return false;
+    if (min    && row['Ministerio']?.trim() !== min)  return false;
+    if (tipo   && row['Tipo de dispositivo según ministerio']?.trim() !== tipo) return false;
     if (dias   && !row['Días de atención']?.includes(dias))   return false;
     if (prof   && !row['Equipo profesional']?.includes(prof)) return false;
     if (est    && !row['Estrategia']?.includes(est))          return false;
@@ -259,15 +298,34 @@ function applyFilters() {
     return true;
   });
 
-  // Estilos activos
-  [['filterDias','clearDias',dias],['filterProf','clearProf',prof],['filterEst','clearEst',est],
+  sortData();
+
+  [['filterMin','clearMin',min],['filterTipo','clearTipo',tipo],
+   ['filterDias','clearDias',dias],['filterProf','clearProf',prof],['filterEst','clearEst',est],
    ['filterPob','clearPob',pob],['filterSrv','clearSrv',srv],['filterBarrio','clearBarrio',barrio]
   ].forEach(([sid, cid, val]) => {
     document.getElementById(sid).classList.toggle('active', !!val);
     const cl = document.getElementById(cid); if (cl) cl.classList.toggle('visible', !!val);
   });
 
-  updateActiveTags({ search, dias, prof, est, pob, srv, barrio });
+  updateActiveTags({ search, min, tipo, dias, prof, est, pob, srv, barrio });
+  renderTable();
+}
+
+function sortData() {
+  filtered.sort((a, b) => {
+    const va = (a[sortCol] || '').toLowerCase();
+    const vb = (b[sortCol] || '').toLowerCase();
+    if (va < vb) return sortDir === 'asc' ? -1 : 1;
+    if (va > vb) return sortDir === 'asc' ? 1 : -1;
+    return 0;
+  });
+}
+
+function handleSort(key) {
+  if (sortCol === key) { sortDir = sortDir === 'asc' ? 'desc' : 'asc'; }
+  else { sortCol = key; sortDir = 'asc'; }
+  sortData();
   renderTable();
 }
 
@@ -275,11 +333,13 @@ function updateActiveTags(f) {
   const c = document.getElementById('activeTags'); c.innerHTML = '';
   const tags = [
     f.search ? { label:`Nombre: "${f.search}"`, fn:()=>{ document.getElementById('searchName').value=''; applyFilters(); }} : null,
-    f.dias   ? { label:`Día: ${f.dias}`,         fn:()=>clearFilter('filterDias','clearDias') } : null,
+    f.min    ? { label:`Ministerio: ${f.min}`,   fn:()=>clearFilter('filterMin','clearMin') }    : null,
+    f.tipo   ? { label:`Tipo: ${f.tipo}`,         fn:()=>clearFilter('filterTipo','clearTipo') } : null,
+    f.dias   ? { label:`Día: ${f.dias}`,          fn:()=>clearFilter('filterDias','clearDias') } : null,
     f.prof   ? { label:`Prof: ${f.prof}`,         fn:()=>clearFilter('filterProf','clearProf') } : null,
-    f.est    ? { label:`Estrategia: ${f.est}`,    fn:()=>clearFilter('filterEst','clearEst') }  : null,
-    f.pob    ? { label:`Población: ${f.pob}`,     fn:()=>clearFilter('filterPob','clearPob') }  : null,
-    f.srv    ? { label:`Servicio: ${f.srv}`,      fn:()=>clearFilter('filterSrv','clearSrv') }  : null,
+    f.est    ? { label:`Est: ${f.est}`,           fn:()=>clearFilter('filterEst','clearEst') }   : null,
+    f.pob    ? { label:`Pob: ${f.pob}`,           fn:()=>clearFilter('filterPob','clearPob') }   : null,
+    f.srv    ? { label:`Srv: ${f.srv}`,           fn:()=>clearFilter('filterSrv','clearSrv') }   : null,
     f.barrio ? { label:`Barrio: ${f.barrio}`,     fn:()=>{ document.getElementById('filterBarrio').value=''; applyFilters(); }} : null,
   ].filter(Boolean);
   tags.forEach(t => {
@@ -293,7 +353,7 @@ function updateActiveTags(f) {
 function renderTable() {
   document.getElementById('countNum').textContent = filtered.length;
   document.getElementById('resultsInfo').innerHTML =
-    `Mostrando <strong>${filtered.length}</strong> de <strong>${allData.length}</strong> efectores`;
+    `Mostrando <strong>${filtered.length}</strong> de <strong>${allData.length}</strong> efectores — clic en encabezado para ordenar`;
 
   if (!filtered.length) {
     document.getElementById('tableContainer').innerHTML =
@@ -307,9 +367,16 @@ function renderTable() {
       .map(v=>`<span class="tag ${blue?'tag-blue':''}">${v}</span>`).join(' ');
   };
 
+  const headers = COLUMNS.map(col => {
+    let cls = sortCol === col.key ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : '';
+    return `<th class="${cls}" onclick="handleSort('${col.key}')">${col.label}</th>`;
+  }).join('');
+
   const rows = filtered.map((row, i) => `
     <tr onclick="openModal(${i})">
       <td class="td-name">${row['Nombre del dispositivo']||'—'}<div class="td-sub">${row['Barrio']||''} · ${row['Comuna']||''}</div></td>
+      <td><span class="tag tag-green">${row['Ministerio']||'—'}</span></td>
+      <td>${row['Tipo de dispositivo según ministerio']||'—'}</td>
       <td>${row['Dirección']||'—'}</td>
       <td><span style="font-family:'DM Mono',monospace;font-size:12px">${row['Horario de atención']||'—'}</span></td>
       <td>${row['Contacto']||'—'}</td>
@@ -319,10 +386,7 @@ function renderTable() {
 
   document.getElementById('tableContainer').innerHTML = `
     <div class="table-wrap"><table>
-      <thead><tr>
-        <th>Dispositivo</th><th>Dirección</th><th>Horario</th>
-        <th>Contacto</th><th>Días</th><th>Estrategia</th>
-      </tr></thead>
+      <thead><tr>${headers}</tr></thead>
       <tbody>${rows}</tbody>
     </table></div>`;
 }
@@ -336,7 +400,7 @@ function openModal(i) {
   };
   const f = (label, val, isTag, blue) =>
     `<div class="modal-row"><div class="modal-row-label">${label}</div>
-     <div class="modal-row-value">${isTag ? tags(val, blue) : (val||'<span style="color:var(--text3)">—</span>')}</div></div>`;
+     <div class="modal-row-value">${isTag ? tags(val,blue) : (val||'<span style="color:var(--text3)">—</span>')}</div></div>`;
 
   document.getElementById('modalContent').innerHTML = `
     <div class="modal-header">
@@ -366,7 +430,8 @@ function closeModal(e) { if (e.target.id==='modalOverlay') document.getElementBy
 function clearFilter(sid, cid) { document.getElementById(sid).value=''; applyFilters(); }
 function resetAll() {
   document.getElementById('searchName').value='';
-  ['filterDias','filterProf','filterEst','filterPob','filterSrv','filterBarrio'].forEach(id => document.getElementById(id).value='');
+  ['filterMin','filterTipo','filterDias','filterProf','filterEst','filterPob','filterSrv','filterBarrio']
+    .forEach(id => document.getElementById(id).value='');
   applyFilters();
 }
 
