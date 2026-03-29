@@ -16,11 +16,9 @@
     --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
     --header-h: 63px;
-    --thead-h: 38px;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; line-height: 1.5; }
 
-  /* HEADER */
   header {
     background: var(--surface); border-bottom: 1px solid var(--border);
     padding: 18px 32px; position: sticky; top: 0; z-index: 200;
@@ -32,10 +30,8 @@
   .header-count { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); background: var(--surface2); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; white-space: nowrap; }
   .header-count span { color: var(--accent); font-weight: 500; }
 
-  /* LAYOUT */
   .layout { display: grid; grid-template-columns: 272px 1fr; height: calc(100vh - var(--header-h)); overflow: hidden; }
 
-  /* SIDEBAR */
   .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 22px 18px; overflow-y: auto; }
   .sidebar-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 16px; }
 
@@ -56,7 +52,6 @@
   .reset-btn { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface2); font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--text2); cursor: pointer; transition: all 0.15s; margin-top: 4px; }
   .reset-btn:hover { background: var(--border); color: var(--text); }
 
-  /* MAIN */
   .main { display: flex; flex-direction: column; overflow: hidden; }
   .main-top { padding: 16px 26px 10px; flex-shrink: 0; }
 
@@ -68,13 +63,25 @@
   .results-info { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
   .results-info strong { color: var(--text2); }
 
-  /* TABLE CONTAINER — scrollable, fixed header */
-  .table-container { flex: 1; overflow: auto; padding: 0 26px 26px; }
+  /* TABLE CONTAINER — scroll horizontal Y vertical */
+  .table-container {
+    flex: 1;
+    overflow: auto;          /* scroll en ambas direcciones */
+    padding: 0 26px 26px;
+  }
 
-  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-width: 1000px;       /* fuerza scroll horizontal cuando la pantalla es chica */
+  }
 
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
 
+  /* Encabezado fijo */
   thead { position: sticky; top: 0; z-index: 10; }
   thead tr { background: var(--surface2); border-bottom: 2px solid var(--border); }
 
@@ -92,12 +99,13 @@
   tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; cursor: pointer; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: var(--surface2); }
-  td { padding: 11px 14px; color: var(--text); vertical-align: top; }
-  .td-name { font-weight: 500; max-width: 200px; }
+  td { padding: 11px 14px; color: var(--text); vertical-align: top; white-space: nowrap; }
+  td.wrap { white-space: normal; min-width: 160px; max-width: 220px; }
+  .td-name { font-weight: 500; white-space: normal; min-width: 200px; max-width: 240px; }
   .td-sub { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: 'DM Mono', monospace; }
-  .td-tags { display: flex; flex-wrap: wrap; gap: 3px; max-width: 200px; }
+  .td-tags { display: flex; flex-wrap: wrap; gap: 3px; min-width: 160px; max-width: 220px; }
   .tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
-  .tag-blue { background: var(--accent-light); color: var(--accent); }
+  .tag-blue  { background: var(--accent-light); color: var(--accent); }
   .tag-green { background: #EAF3DE; color: #27500A; }
 
   .empty { text-align: center; padding: 60px 20px; color: var(--text3); }
@@ -107,7 +115,6 @@
   .loading { text-align: center; padding: 80px 20px; color: var(--text3); }
   .spinner { width: 28px; height: 28px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 14px; }
 
-  /* MODAL */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 300; align-items: center; justify-content: center; padding: 20px; }
   .modal-overlay.open { display: flex; }
   .modal { background: var(--surface); border-radius: 14px; padding: 26px; max-width: 540px; width: 100%; box-shadow: var(--shadow-md); max-height: 80vh; overflow-y: auto; animation: slideUp 0.2s ease; }
@@ -128,7 +135,7 @@
     .layout { grid-template-columns: 1fr; height: auto; overflow: visible; }
     .sidebar { height: auto; border-right: none; border-bottom: 1px solid var(--border); }
     .main { height: auto; overflow: visible; }
-    .table-container { overflow: visible; padding: 0 16px 16px; }
+    .table-container { overflow-x: auto; padding: 0 16px 16px; }
     .main-top { padding: 16px; }
   }
 </style>
@@ -209,14 +216,19 @@ let allData = [], filtered = [];
 let sortCol = 'Nombre del dispositivo', sortDir = 'asc';
 
 const COLUMNS = [
-  { label: 'Dispositivo',        key: 'Nombre del dispositivo' },
-  { label: 'Ministerio',         key: 'Ministerio' },
-  { label: 'Tipo de dispositivo',key: 'Tipo de dispositivo según ministerio' },
-  { label: 'Dirección',          key: 'Dirección' },
-  { label: 'Horario',            key: 'Horario de atención' },
-  { label: 'Contacto',           key: 'Contacto' },
-  { label: 'Días',               key: 'Días de atención' },
-  { label: 'Estrategia',         key: 'Estrategia' },
+  { label: 'Dispositivo',         key: 'Nombre del dispositivo' },
+  { label: 'Ministerio',          key: 'Ministerio' },
+  { label: 'Tipo de dispositivo', key: 'Tipo de dispositivo según ministerio' },
+  { label: 'Dirección',           key: 'Dirección' },
+  { label: 'Barrio / Comuna',     key: 'Barrio' },
+  { label: 'Horario',             key: 'Horario de atención' },
+  { label: 'Contacto',            key: 'Contacto' },
+  { label: 'Referente',           key: 'Referente /Coordinador' },
+  { label: 'Días',                key: 'Días de atención' },
+  { label: 'Estrategia',          key: 'Estrategia' },
+  { label: 'Equipo profesional',  key: 'Equipo profesional' },
+  { label: 'Población objetivo',  key: 'Población objetivo' },
+  { label: 'Servicios',           key: 'Servicios' },
 ];
 
 async function loadData() {
@@ -243,19 +255,13 @@ async function loadData() {
 }
 
 function buildDropdowns() {
-  // Valor único (exacto)
-  const simples = {
-    'Ministerio': 'filterMin',
-    'Tipo de dispositivo según ministerio': 'filterTipo',
-  };
+  const simples = { 'Ministerio': 'filterMin', 'Tipo de dispositivo según ministerio': 'filterTipo' };
   Object.entries(simples).forEach(([col, id]) => {
     const vals = new Set();
     allData.forEach(row => { if (row[col]?.trim()) vals.add(row[col].trim()); });
     const sel = document.getElementById(id);
     [...vals].sort().forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
   });
-
-  // Multivalor (separados por coma)
   const multivalor = {
     'Días de atención': 'filterDias', 'Equipo profesional': 'filterProf',
     'Estrategia': 'filterEst', 'Población objetivo': 'filterPob', 'Servicios': 'filterSrv'
@@ -266,8 +272,6 @@ function buildDropdowns() {
     const sel = document.getElementById(id);
     [...vals].sort().forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
   });
-
-  // Barrios
   const barrios = new Set();
   allData.forEach(r => { if (r['Barrio']) barrios.add(r['Barrio'].trim()); });
   const selB = document.getElementById('filterBarrio');
@@ -333,7 +337,7 @@ function updateActiveTags(f) {
   const c = document.getElementById('activeTags'); c.innerHTML = '';
   const tags = [
     f.search ? { label:`Nombre: "${f.search}"`, fn:()=>{ document.getElementById('searchName').value=''; applyFilters(); }} : null,
-    f.min    ? { label:`Ministerio: ${f.min}`,   fn:()=>clearFilter('filterMin','clearMin') }    : null,
+    f.min    ? { label:`Min: ${f.min}`,          fn:()=>clearFilter('filterMin','clearMin') }    : null,
     f.tipo   ? { label:`Tipo: ${f.tipo}`,         fn:()=>clearFilter('filterTipo','clearTipo') } : null,
     f.dias   ? { label:`Día: ${f.dias}`,          fn:()=>clearFilter('filterDias','clearDias') } : null,
     f.prof   ? { label:`Prof: ${f.prof}`,         fn:()=>clearFilter('filterProf','clearProf') } : null,
@@ -377,11 +381,16 @@ function renderTable() {
       <td class="td-name">${row['Nombre del dispositivo']||'—'}<div class="td-sub">${row['Barrio']||''} · ${row['Comuna']||''}</div></td>
       <td><span class="tag tag-green">${row['Ministerio']||'—'}</span></td>
       <td>${row['Tipo de dispositivo según ministerio']||'—'}</td>
-      <td>${row['Dirección']||'—'}</td>
+      <td class="wrap">${row['Dirección']||'—'}</td>
+      <td>${row['Barrio']||'—'}<br><span style="font-size:11px;color:var(--text3)">${row['Comuna']||''}</span></td>
       <td><span style="font-family:'DM Mono',monospace;font-size:12px">${row['Horario de atención']||'—'}</span></td>
       <td>${row['Contacto']||'—'}</td>
+      <td class="wrap">${row['Referente /Coordinador']||'—'}</td>
       <td><div class="td-tags">${tags(row['Días de atención'], true)}</div></td>
       <td><div class="td-tags">${tags(row['Estrategia'])}</div></td>
+      <td><div class="td-tags">${tags(row['Equipo profesional'])}</div></td>
+      <td><div class="td-tags">${tags(row['Población objetivo'])}</div></td>
+      <td><div class="td-tags">${tags(row['Servicios'])}</div></td>
     </tr>`).join('');
 
   document.getElementById('tableContainer').innerHTML = `
