@@ -13,49 +13,46 @@
     --accent: #2563eb; --accent-light: #eff6ff; --accent-border: #bfdbfe;
     --tag-bg: #f0efed; --tag-text: #4b4b45;
     --radius: 10px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
     --header-h: 63px;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; line-height: 1.5; }
 
-  header {
-    background: var(--surface); border-bottom: 1px solid var(--border);
-    padding: 18px 32px; position: sticky; top: 0; z-index: 200;
-    display: flex; align-items: center; gap: 14px; height: var(--header-h);
-  }
+  header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 18px 32px; position: sticky; top: 0; z-index: 200; display: flex; align-items: center; gap: 14px; height: var(--header-h); }
   .header-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
   header h1 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
   header p { font-size: 12px; color: var(--text3); margin-top: 1px; }
   .header-count { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text3); background: var(--surface2); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; white-space: nowrap; }
   .header-count span { color: var(--accent); font-weight: 500; }
 
-  .layout { display: grid; grid-template-columns: 272px 1fr; height: calc(100vh - var(--header-h)); overflow: hidden; }
+  .layout { display: grid; grid-template-columns: 260px 1fr; height: calc(100vh - var(--header-h)); overflow: hidden; }
 
-  .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 22px 18px; overflow-y: auto; }
-  .sidebar-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 16px; }
+  .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 20px 16px; overflow-y: auto; }
+  .sidebar-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 14px; }
 
-  .search-wrap { position: relative; margin-bottom: 18px; }
+  .search-wrap { position: relative; margin-bottom: 16px; }
   .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text3); pointer-events: none; }
-  .search-input { width: 100%; padding: 8px 10px 8px 32px; border: 1px solid var(--border); border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--surface2); color: var(--text); outline: none; transition: border-color 0.15s, background 0.15s; }
+  .search-input { width: 100%; padding: 8px 10px 8px 32px; border: 1px solid var(--border); border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--surface2); color: var(--text); outline: none; transition: border-color 0.15s; }
   .search-input:focus { border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-light); }
   .search-input::placeholder { color: var(--text3); }
 
-  .filter-group { margin-bottom: 16px; }
-  .filter-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text2); margin-bottom: 5px; display: flex; align-items: center; justify-content: space-between; }
+  .filter-group { margin-bottom: 14px; }
+  .filter-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text2); margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; }
   .filter-clear { font-size: 10px; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--accent); cursor: pointer; display: none; }
   .filter-clear.visible { display: block; }
-  .filter-select { width: 100%; padding: 7px 28px 7px 10px; border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; background: var(--surface2); color: var(--text); outline: none; appearance: none; cursor: pointer; transition: border-color 0.15s; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9e96' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
+  .filter-select { width: 100%; padding: 7px 28px 7px 10px; border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 12px; background: var(--surface2); color: var(--text); outline: none; appearance: none; cursor: pointer; transition: border-color 0.15s; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9e96' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
   .filter-select:focus { border-color: var(--accent); }
   .filter-select.active { border-color: var(--accent); background-color: var(--accent-light); color: var(--accent); }
 
   .reset-btn { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface2); font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--text2); cursor: pointer; transition: all 0.15s; margin-top: 4px; }
   .reset-btn:hover { background: var(--border); color: var(--text); }
 
+  /* MAIN */
   .main { display: flex; flex-direction: column; overflow: hidden; }
-  .main-top { padding: 16px 26px 10px; flex-shrink: 0; }
+  .main-top { padding: 14px 22px 8px; flex-shrink: 0; }
 
-  .active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; min-height: 0; }
+  .active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
   .filter-tag { display: flex; align-items: center; gap: 5px; background: var(--accent-light); border: 1px solid var(--accent-border); color: var(--accent); font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 20px; animation: fadeIn 0.15s ease; }
   .filter-tag button { background: none; border: none; color: var(--accent); cursor: pointer; padding: 0; font-size: 13px; line-height: 1; opacity: 0.7; }
   .filter-tag button:hover { opacity: 1; }
@@ -63,33 +60,20 @@
   .results-info { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
   .results-info strong { color: var(--text2); }
 
-  /* TABLE CONTAINER — scroll horizontal Y vertical */
-  .table-container {
-    flex: 1;
-    overflow: auto;          /* scroll en ambas direcciones */
-    padding: 0 26px 26px;
-  }
+  /* TABLE — scroll en ambas direcciones */
+  .table-container { flex: 1; overflow: auto; padding: 8px 22px 22px; }
 
-  .table-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    min-width: 1000px;       /* fuerza scroll horizontal cuando la pantalla es chica */
-  }
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); display: inline-block; min-width: 100%; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table { border-collapse: collapse; font-size: 13px; width: 100%; }
 
-  /* Encabezado fijo */
   thead { position: sticky; top: 0; z-index: 10; }
-  thead tr { background: var(--surface2); border-bottom: 2px solid var(--border); }
-
   th {
-    padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 600;
+    padding: 10px 16px; text-align: left; font-size: 11px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.06em; color: var(--text2);
     white-space: nowrap; cursor: pointer; user-select: none;
-    transition: background 0.15s; background: var(--surface2);
+    background: var(--surface2); border-bottom: 2px solid var(--border);
+    transition: background 0.15s;
   }
   th:hover { background: var(--border); color: var(--text); }
   th.sort-asc::after  { content: ' ↑'; color: var(--accent); }
@@ -99,14 +83,22 @@
   tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; cursor: pointer; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: var(--surface2); }
-  td { padding: 11px 14px; color: var(--text); vertical-align: top; white-space: nowrap; }
-  td.wrap { white-space: normal; min-width: 160px; max-width: 220px; }
-  .td-name { font-weight: 500; white-space: normal; min-width: 200px; max-width: 240px; }
+
+  td { padding: 10px 16px; color: var(--text); vertical-align: top; }
+
+  /* Anchos fijos por columna para que la tabla sea predecible */
+  .col-nombre  { min-width: 220px; max-width: 260px; white-space: normal; font-weight: 500; }
+  .col-tipo    { min-width: 160px; max-width: 200px; white-space: normal; font-size: 12px; color: var(--text2); }
+  .col-dir     { min-width: 200px; max-width: 240px; white-space: normal; font-size: 12px; }
+  .col-tel     { min-width: 140px; white-space: nowrap; font-family: 'DM Mono', monospace; font-size: 12px; }
+  .col-dias    { min-width: 160px; }
+  .col-horario { min-width: 130px; white-space: nowrap; font-family: 'DM Mono', monospace; font-size: 12px; }
+  .col-est     { min-width: 200px; max-width: 260px; }
+
   .td-sub { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: 'DM Mono', monospace; }
-  .td-tags { display: flex; flex-wrap: wrap; gap: 3px; min-width: 160px; max-width: 220px; }
+  .td-tags { display: flex; flex-wrap: wrap; gap: 3px; }
   .tag { display: inline-block; background: var(--tag-bg); color: var(--tag-text); font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
-  .tag-blue  { background: var(--accent-light); color: var(--accent); }
-  .tag-green { background: #EAF3DE; color: #27500A; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); }
 
   .empty { text-align: center; padding: 60px 20px; color: var(--text3); }
   .empty-icon { font-size: 32px; margin-bottom: 12px; }
@@ -120,7 +112,7 @@
   .modal { background: var(--surface); border-radius: 14px; padding: 26px; max-width: 540px; width: 100%; box-shadow: var(--shadow-md); max-height: 80vh; overflow-y: auto; animation: slideUp 0.2s ease; }
   .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; gap: 12px; }
   .modal-title { font-size: 16px; font-weight: 600; line-height: 1.3; }
-  .modal-close { background: var(--surface2); border: 1px solid var(--border); width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 16px; color: var(--text2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s; }
+  .modal-close { background: var(--surface2); border: 1px solid var(--border); width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-size: 16px; color: var(--text2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .modal-close:hover { background: var(--border); }
   .modal-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
   .modal-row-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); min-width: 100px; padding-top: 2px; }
@@ -130,14 +122,6 @@
   @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes slideUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-
-  @media (max-width: 768px) {
-    .layout { grid-template-columns: 1fr; height: auto; overflow: visible; }
-    .sidebar { height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-    .main { height: auto; overflow: visible; }
-    .table-container { overflow-x: auto; padding: 0 16px 16px; }
-    .main-top { padding: 16px; }
-  }
 </style>
 </head>
 <body>
@@ -153,7 +137,7 @@
 
 <div class="layout">
   <aside class="sidebar">
-    <div class="sidebar-title">Filtros de búsqueda</div>
+    <div class="sidebar-title">Filtros</div>
     <div class="search-wrap">
       <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" class="search-input" id="searchName" placeholder="Buscar por nombre...">
@@ -188,7 +172,7 @@
     </div>
     <div class="filter-group">
       <div class="filter-label">Barrio <span class="filter-clear" id="clearBarrio" onclick="clearFilter('filterBarrio','clearBarrio')">Limpiar</span></div>
-      <select class="filter-select" id="filterBarrio" onchange="applyFilters()"><option value="">Todos los barrios</option></select>
+      <select class="filter-select" id="filterBarrio" onchange="applyFilters()"><option value="">Todos</option></select>
     </div>
     <button class="reset-btn" onclick="resetAll()">↺ Limpiar todos los filtros</button>
   </aside>
@@ -215,22 +199,6 @@ const SHEET_NAME = 'Buscador_final';
 let allData = [], filtered = [];
 let sortCol = 'Nombre del dispositivo', sortDir = 'asc';
 
-const COLUMNS = [
-  { label: 'Dispositivo',         key: 'Nombre del dispositivo' },
-  { label: 'Ministerio',          key: 'Ministerio' },
-  { label: 'Tipo de dispositivo', key: 'Tipo de dispositivo según ministerio' },
-  { label: 'Dirección',           key: 'Dirección' },
-  { label: 'Barrio / Comuna',     key: 'Barrio' },
-  { label: 'Horario',             key: 'Horario de atención' },
-  { label: 'Contacto',            key: 'Contacto' },
-  { label: 'Referente',           key: 'Referente /Coordinador' },
-  { label: 'Días',                key: 'Días de atención' },
-  { label: 'Estrategia',          key: 'Estrategia' },
-  { label: 'Equipo profesional',  key: 'Equipo profesional' },
-  { label: 'Población objetivo',  key: 'Población objetivo' },
-  { label: 'Servicios',           key: 'Servicios' },
-];
-
 async function loadData() {
   const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
   try {
@@ -250,7 +218,7 @@ async function loadData() {
   } catch(e) {
     document.getElementById('tableContainer').innerHTML =
       `<div class="empty"><div class="empty-icon">⚠️</div><h3>Error al cargar los datos</h3>
-      <p>El Sheet debe estar en modo público.<br>Abrí tu Google Sheet → Compartir → "Cualquiera con el enlace puede ver".</p></div>`;
+      <p>El Sheet debe estar en modo público.</p></div>`;
   }
 }
 
@@ -327,26 +295,23 @@ function sortData() {
 }
 
 function handleSort(key) {
-  if (sortCol === key) { sortDir = sortDir === 'asc' ? 'desc' : 'asc'; }
-  else { sortCol = key; sortDir = 'asc'; }
-  sortData();
-  renderTable();
+  sortCol === key ? sortDir = sortDir === 'asc' ? 'desc' : 'asc' : (sortCol = key, sortDir = 'asc');
+  sortData(); renderTable();
 }
 
 function updateActiveTags(f) {
   const c = document.getElementById('activeTags'); c.innerHTML = '';
-  const tags = [
-    f.search ? { label:`Nombre: "${f.search}"`, fn:()=>{ document.getElementById('searchName').value=''; applyFilters(); }} : null,
-    f.min    ? { label:`Min: ${f.min}`,          fn:()=>clearFilter('filterMin','clearMin') }    : null,
-    f.tipo   ? { label:`Tipo: ${f.tipo}`,         fn:()=>clearFilter('filterTipo','clearTipo') } : null,
-    f.dias   ? { label:`Día: ${f.dias}`,          fn:()=>clearFilter('filterDias','clearDias') } : null,
-    f.prof   ? { label:`Prof: ${f.prof}`,         fn:()=>clearFilter('filterProf','clearProf') } : null,
-    f.est    ? { label:`Est: ${f.est}`,           fn:()=>clearFilter('filterEst','clearEst') }   : null,
-    f.pob    ? { label:`Pob: ${f.pob}`,           fn:()=>clearFilter('filterPob','clearPob') }   : null,
-    f.srv    ? { label:`Srv: ${f.srv}`,           fn:()=>clearFilter('filterSrv','clearSrv') }   : null,
-    f.barrio ? { label:`Barrio: ${f.barrio}`,     fn:()=>{ document.getElementById('filterBarrio').value=''; applyFilters(); }} : null,
-  ].filter(Boolean);
-  tags.forEach(t => {
+  [
+    f.search ? { label:`"${f.search}"`,      fn:()=>{ document.getElementById('searchName').value=''; applyFilters(); }} : null,
+    f.min    ? { label:`Min: ${f.min}`,       fn:()=>clearFilter('filterMin','clearMin') }    : null,
+    f.tipo   ? { label:`Tipo: ${f.tipo}`,     fn:()=>clearFilter('filterTipo','clearTipo') } : null,
+    f.dias   ? { label:`Día: ${f.dias}`,      fn:()=>clearFilter('filterDias','clearDias') } : null,
+    f.prof   ? { label:`Prof: ${f.prof}`,     fn:()=>clearFilter('filterProf','clearProf') } : null,
+    f.est    ? { label:`Est: ${f.est}`,       fn:()=>clearFilter('filterEst','clearEst') }   : null,
+    f.pob    ? { label:`Pob: ${f.pob}`,       fn:()=>clearFilter('filterPob','clearPob') }   : null,
+    f.srv    ? { label:`Srv: ${f.srv}`,       fn:()=>clearFilter('filterSrv','clearSrv') }   : null,
+    f.barrio ? { label:`Barrio: ${f.barrio}`, fn:()=>{ document.getElementById('filterBarrio').value=''; applyFilters(); }} : null,
+  ].filter(Boolean).forEach(t => {
     const el = document.createElement('div'); el.className = 'filter-tag';
     el.innerHTML = `${t.label} <button>×</button>`;
     el.querySelector('button').addEventListener('click', t.fn);
@@ -371,26 +336,30 @@ function renderTable() {
       .map(v=>`<span class="tag ${blue?'tag-blue':''}">${v}</span>`).join(' ');
   };
 
-  const headers = COLUMNS.map(col => {
-    let cls = sortCol === col.key ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : '';
+  const cols = [
+    { label:'Nombre del dispositivo', key:'Nombre del dispositivo' },
+    { label:'Tipo de dispositivo',    key:'Tipo de dispositivo según ministerio' },
+    { label:'Dirección',              key:'Dirección' },
+    { label:'Contacto',               key:'Contacto' },
+    { label:'Días de atención',       key:'Días de atención' },
+    { label:'Horario',                key:'Horario de atención' },
+    { label:'Estrategia',             key:'Estrategia' },
+  ];
+
+  const headers = cols.map(col => {
+    const cls = sortCol === col.key ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : '';
     return `<th class="${cls}" onclick="handleSort('${col.key}')">${col.label}</th>`;
   }).join('');
 
   const rows = filtered.map((row, i) => `
     <tr onclick="openModal(${i})">
-      <td class="td-name">${row['Nombre del dispositivo']||'—'}<div class="td-sub">${row['Barrio']||''} · ${row['Comuna']||''}</div></td>
-      <td><span class="tag tag-green">${row['Ministerio']||'—'}</span></td>
-      <td>${row['Tipo de dispositivo según ministerio']||'—'}</td>
-      <td class="wrap">${row['Dirección']||'—'}</td>
-      <td>${row['Barrio']||'—'}<br><span style="font-size:11px;color:var(--text3)">${row['Comuna']||''}</span></td>
-      <td><span style="font-family:'DM Mono',monospace;font-size:12px">${row['Horario de atención']||'—'}</span></td>
-      <td>${row['Contacto']||'—'}</td>
-      <td class="wrap">${row['Referente /Coordinador']||'—'}</td>
-      <td><div class="td-tags">${tags(row['Días de atención'], true)}</div></td>
-      <td><div class="td-tags">${tags(row['Estrategia'])}</div></td>
-      <td><div class="td-tags">${tags(row['Equipo profesional'])}</div></td>
-      <td><div class="td-tags">${tags(row['Población objetivo'])}</div></td>
-      <td><div class="td-tags">${tags(row['Servicios'])}</div></td>
+      <td class="col-nombre">${row['Nombre del dispositivo']||'—'}<div class="td-sub">${row['Barrio']||''} · ${row['Comuna']||''}</div></td>
+      <td class="col-tipo">${row['Tipo de dispositivo según ministerio']||'—'}</td>
+      <td class="col-dir">${row['Dirección']||'—'}</td>
+      <td class="col-tel">${row['Contacto']||'—'}</td>
+      <td class="col-dias"><div class="td-tags">${tags(row['Días de atención'], true)}</div></td>
+      <td class="col-horario">${row['Horario de atención']||'—'}</td>
+      <td class="col-est"><div class="td-tags">${tags(row['Estrategia'])}</div></td>
     </tr>`).join('');
 
   document.getElementById('tableContainer').innerHTML = `
